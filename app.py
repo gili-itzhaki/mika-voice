@@ -1,7 +1,4 @@
 # ✅ MIKA VOICE – מערכת מלאה לשיחה חיה בטלפון עם קול אנושי בעברית
-@app.route("/", methods=["GET"])
-def index():
-    return "🔊 מיקה מוכנה לדבר! השרת פועל בהצלחה."
 
 from flask import Flask, request, Response, send_file
 from twilio.twiml.voice_response import VoiceResponse
@@ -15,6 +12,9 @@ import os
 openai.api_key = "sk-ANNUSK9K27RJE7EFSBUZ4929"
 
 app = Flask(__name__)
+@app.route("/", methods=["GET"])
+def index():
+    return "🔊 מיקה מוכנה לדבר! השרת פועל בהצלחה."
 
 # 📞 Twilio יקרא לנתיב זה בשיחה נכנסת
 @app.route("/voice", methods=["POST"])
