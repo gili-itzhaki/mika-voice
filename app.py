@@ -1,4 +1,8 @@
 # ✅ MIKA VOICE – מערכת מלאה לשיחה חיה בטלפון עם קול אנושי בעברית
+@app.route("/", methods=["GET"])
+def index():
+    return "🔊 מיקה מוכנה לדבר! השרת פועל בהצלחה."
+
 from flask import Flask, request, Response, send_file
 from twilio.twiml.voice_response import VoiceResponse
 import openai
@@ -39,7 +43,7 @@ def transcribe():
     asyncio.run(generate_speech(reply, filename))
 
     vr = VoiceResponse()
-    vr.play(f"https://YOUR_DOMAIN/{filename}")
+    vr.play(f"https://mika-voice.onrender.com/{filename}")
     vr.redirect("/voice")  # חוזר להתחלה – דו־שיח מלא
     return Response(str(vr), mimetype="text/xml")
 
